@@ -3,11 +3,9 @@ package trasnportadora.domains;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -20,13 +18,13 @@ public class Cidade {
     private String nome;
     @NotEmpty(message = "O estado deve ser preenchido")
     private String uf;
-    @NotNull
-    private Double valor;
+    @Positive(message = "A cidade deve possuir um valor ")
+    private double valor;
 
     public Cidade() {
     }
 
-    public Cidade(String nome, String uf, Double valor) {
+    public Cidade(String nome, String uf, double valor) {
         this.nome = nome;
         this.uf = uf;
         this.valor = valor;
@@ -53,11 +51,11 @@ public class Cidade {
         this.uf = uf;
     }
 
-    public Double getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 

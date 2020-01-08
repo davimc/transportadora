@@ -10,6 +10,6 @@ import java.util.List;
 
 
 @Repository
-public interface FreteRepository extends JpaRepository<Frete, String> {
+public interface FreteRepository extends JpaRepository<Frete, Integer> {
 
 }

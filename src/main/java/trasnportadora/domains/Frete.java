@@ -6,35 +6,43 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Entity
 public class Frete {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @NotEmpty(message = "A encomenda precisa de receptor")
     @JsonManagedReference
     @ManyToOne
     @JoinColumn(name="cliente_id")
     private Cliente cliente;
+
     @NotEmpty(message = "A encomenda precisa de um destino")
     @JsonManagedReference
     @ManyToOne
     @JoinColumn(name="cidade_id")
-
     @NotEmpty(message = "A cidade deve ser preenchida")
     private Cidade cidade;
+
     @NotEmpty(message = "O código deve ser preenchido")
     private String codigo;
+
     @NotEmpty(message = "A descrição deve ser preenchida")
     private String descricao;
-    private Double peso;
-    private Double valor;
+
+    @Positive(message = "O produto precisa de um peso")
+    private double peso;
+
+    @Positive(message = "O produto precisa ter um valor")
+    private double valor;
 
     public Frete() {
     }
 
-    public Frete(Cliente cliente, Cidade cidade, String codigo, String descricao, Double peso) {
+    public Frete(Cliente cliente, Cidade cidade, String codigo, String descricao, double peso) {
         this.cliente = cliente;
         this.cidade = cidade;
         this.codigo = codigo;
@@ -71,23 +79,23 @@ public class Frete {
         this.descricao = descricao;
     }
 
-    public Double getPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void setPeso(Double peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 
-    public Double getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
-    private Double calculaValor(){
+    private double calculaValor(){
         return 0.0;
     }
 }

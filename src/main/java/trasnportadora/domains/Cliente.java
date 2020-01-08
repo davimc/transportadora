@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class Cliente implements Serializable {
     @JsonBackReference
 
     @OneToMany(mappedBy = "cliente")
+    @NotNull
     private List<Frete> fretes;
     @NotEmpty(message = "O nome deve ser preenchido")
     private String nome;

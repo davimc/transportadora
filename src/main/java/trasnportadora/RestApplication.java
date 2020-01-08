@@ -18,20 +18,20 @@ import trasnportadora.repositories.FreteRepository;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class RestApplication implements CommandLineRunner {
-    @Autowired
+public class RestApplication /*implements CommandLineRunner */{
+   /* @Autowired
     private ClienteRepository clienteRepository;
     @Autowired
     private CidadeRepository cidadeRepository;
     @Autowired
-    private FreteRepository freteRepository;
+    private FreteRepository freteRepository;*/
 
     public static void main(String[] args) {
         SpringApplication.run(RestApplication.class, args);
     }
 
 
-    @Override
+    /*@Override
     public void run(String... args) throws Exception {
         Cidade cid1 = new Cidade("São Luís","MA", 35.0);
         Cidade cid2 = new Cidade("Pinheiro","MA", 39.0);
@@ -50,7 +50,7 @@ public class RestApplication implements CommandLineRunner {
         c2.getFretes().add(f1);
 
         clienteRepository.saveAll(Arrays.asList(c1,c2,c3));
-    }
+    }*/
     @Bean
     public LocalValidatorFactoryBean validator(MessageSource messageSource) {
         LocalValidatorFactoryBean validatorFactoryBean = new LocalValidatorFactoryBean();
